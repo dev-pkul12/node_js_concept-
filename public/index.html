@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote</title>
+</head>
+
+<body>
+    <h1>Random Quote</h1>
+    <p id="quote">Loading...</p>
+
+    <script>
+        // Function to fetch and update the quote
+        function fetchQuote() {
+            fetch('/quote')
+                .then(response => response.text())
+                .then(quote => {
+                    document.getElementById('quote').innerText = quote;
+                });
+        }
+
+        // Fetch the initial quote
+        fetchQuote();
+
+        // Poll for new quote every 5 seconds
+        setInterval(fetchQuote, 5000);
+    </script>
+</body>
+
+</html>
